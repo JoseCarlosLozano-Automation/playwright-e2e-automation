@@ -1,4 +1,3 @@
-=======
 # Playwright E2E Automation Framework
 End-to-end test automation framework built with Playwright using Page Object Model (POM), dynamic test data, and real-world scenarios.
 
