@@ -44,4 +44,4 @@ End-to-end test automation framework built with Playwright using Page Object Mod
 ---
 
 ## Author
-Jose Lozano
+Jose Lozanogit
