@@ -1,0 +1,18 @@
+import { faker } from '@faker-js/faker';
+
+export const UserData = () => {
+    return {
+        Email: 'test@testingmail.com',
+        Password: 'Echo123$',
+        Event: `Test Event ${Date.now()}`,
+        EventDesc: faker.lorem.sentence(),
+        City: faker.location.city(),
+        Venue: faker.location.streetAddress(),
+        Price: faker.number.int({ min: 100, max: 500 }).toString(),
+        Seats: faker.number.int({ min: 10, max: 100 }).toString(),
+        DateTime: '2026-07-14T18:00',
+        FullName: faker.person.fullName(),
+        Phone: `+91 ${faker.string.numeric(5)} ${faker.string.numeric(5)}`,
+        BookingSeat: faker.number.int({ min: 1, max: 5 }).toString()
+    };
+};
