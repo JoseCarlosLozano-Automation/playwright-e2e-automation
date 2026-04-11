@@ -12,9 +12,9 @@ End-to-end test automation framework built with Playwright using Page Object Mod
 ---
 
 ## Project Structure
-/tests
-/pages
-/test-data
+- /tests
+- /pages
+- /test-data
 
 ---
 
