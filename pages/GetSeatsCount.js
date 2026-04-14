@@ -1,4 +1,5 @@
 import { expect } from '@playwright/test';
+import { waitForApi } from '../utils/waitForApi';
 
 export class GetSeatsCount {
     constructor(page){
@@ -7,11 +8,7 @@ export class GetSeatsCount {
     }
 
     async seatsCount(eventName){
-        await this.page.waitForResponse(response =>
-            response.url().includes('/api/events') &&
-            response.status() === 200 &&
-            response.request().method() === 'GET'
-        );
+        await waitForApi(this.page, '/api/events');
 
         const myEventCard = this.eventCards.filter({ hasText: eventName });
         await expect(myEventCard).toBeVisible();

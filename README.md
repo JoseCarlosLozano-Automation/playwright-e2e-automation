@@ -1,5 +1,5 @@
 # Playwright E2E Automation Framework
-End-to-end test automation framework built with Playwright using Page Object Model (POM), dynamic test data, and real-world scenarios.
+End-to-end test automation framework built with Playwright, designed using industry best practices such as Page Object Model (POM), feature-based test organization, and data-driven testing.
 
 ---
 
@@ -12,9 +12,12 @@ End-to-end test automation framework built with Playwright using Page Object Mod
 ---
 
 ## Project Structure
-- /tests
-- /pages
-- /test-data
+- tests/ 
+-   auth/ 
+-   events/ 
+-   e2e/ 
+- pages/ 
+- test-data/
 
 ---
 
@@ -27,18 +30,17 @@ End-to-end test automation framework built with Playwright using Page Object Mod
 ---
 
 ## How to Run Tests
-- "```bash"
 - "npm install"
 - "npx playwright test"
 
 ---
 
 ## Example Test Flow
-- Create event
+- Create event as admin
 - Validate event appears in list
-- Book ticket
-- Validate booking details
-- Verify seat count decreases
+- Book ticket as user
+- Validate booking confirmation and details
+- Verify seat count decreases after booking
 
 ---
 
