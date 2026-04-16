@@ -14,12 +14,12 @@ test('User can book an event', async ({ page }) => {
 
     await page.goto(url);
 
-    await loginPage.login(user.Email, user.Password);
+    await loginPage.login(user.Email[0], user.Password);
 
     await page.getByTestId('nav-events').click();
     await getSeats.clickBookNow("Dilli Diwali Mela");
     await expect(page.locator('#ticket-count')).toHaveText('1');
-    await fillBooking.bookingFormFiller(user.FullName, user.Email, user.Phone);
+    await fillBooking.bookingFormFiller(user.FullName, user.Email[0], user.Phone);
 
     await expect(page.locator('.booking-ref')).toBeVisible();
 });

@@ -5,7 +5,7 @@ import { UserData } from '../../test-data/userData';
 
 const url = "https://eventhub.rahulshettyacademy.com";
 
-test('Single ticket booking is eligible for refund', async ({ page }) => {
+test('Multiple tickets booking are not eligible for refund', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const fillBooking = new FillBookingForm(page);
     const user = UserData();
@@ -13,15 +13,16 @@ test('Single ticket booking is eligible for refund', async ({ page }) => {
     await page.goto(url);
 
     //Step 1 - Log in
-    await loginPage.login(user.Email[0], user.Password);
+    await loginPage.login(user.Email[1], user.Password);
     await expect(page.locator('span:has-text("Browse Events")')).toBeVisible();
 
-    //Step 2 - Book specific event with 1 ticket (default)
+    //Step 2 - Book specific event with multiple ticket
     await page.getByTestId('nav-events').click();
-    const eventCard = page.getByTestId('event-card').filter({ hasText: 'Dilli Diwali Mela' });
+    const eventCard = page.getByTestId('event-card').filter({ hasText: 'World Tech Summit' });
     await eventCard.getByTestId('book-now-btn').click();
     await expect(page.locator('#ticket-count')).toHaveText('1');
-    await fillBooking.bookingFormFiller(user.FullName, user.Email[0], user.Phone);
+    await page.getByRole('button', { name: '+' }).dblclick();
+    await fillBooking.bookingFormFiller(user.FullName, user.Email[1], user.Phone);
     await expect(page.locator('.booking-ref')).toBeVisible();
     const bookingRef = await page.locator('.booking-ref').textContent();
 
@@ -44,6 +45,6 @@ test('Single ticket booking is eligible for refund', async ({ page }) => {
     //Step 6 - Validate result
     const refoundResults = page.locator('#refund-result');
     await expect(refoundResults).toBeVisible();
-    await expect(refoundResults).toContainText('Eligible for refund');
-    await expect(refoundResults).toContainText('Single-ticket bookings qualify for a full refund.');
+    await expect(refoundResults).toContainText('Not eligible for refund');
+    await expect(refoundResults).toContainText('Group bookings (3 tickets) are non-refundable');
 });

@@ -17,7 +17,7 @@ test('Full creation, booking and valiation of an event event - E2E', async ({ pa
     await page.goto(url);
 
     //Step 1 - Log in
-    await loginPage.login(user.Email, user.Password);
+    await loginPage.login(user.Email[0], user.Password);
     await expect(page.locator('span:has-text("Browse Events")')).toBeVisible();
 
     //Step 2 - Create an event
@@ -36,7 +36,7 @@ test('Full creation, booking and valiation of an event event - E2E', async ({ pa
 
     //Step 5 - Booking
     await expect(page.locator('#ticket-count')).toHaveText('1');
-    await fillBooking.bookingFormFiller(user.FullName, user.Email, user.Phone);
+    await fillBooking.bookingFormFiller(user.FullName, user.Email[0], user.Phone);
 
     //Step 6 - Getting the booking ref
     await expect(page.locator('.booking-ref')).toBeVisible();

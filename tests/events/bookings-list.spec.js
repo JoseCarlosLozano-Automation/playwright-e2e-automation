@@ -10,7 +10,7 @@ test('Booking appears in user bookings list', async ({ page }) => {
     const user = UserData();
 
     await page.goto(url);
-    await loginPage.login(user.Email, user.Password);
+    await loginPage.login(user.Email[0], user.Password);
 
     await page.getByRole('button', { name: 'My Bookings' }).click();
 

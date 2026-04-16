@@ -9,7 +9,7 @@ test('User can login', async ({ page }) => {
     const user = UserData();
 
     await page.goto(url);
-    await loginPage.login(user.Email, user.Password);
+    await loginPage.login(user.Email[0], user.Password);
 
     await expect(page.locator('span:has-text("Browse Events")')).toBeVisible();
 });
