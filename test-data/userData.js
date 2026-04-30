@@ -2,7 +2,16 @@ import { faker } from '@faker-js/faker';
 
 export const UserData = () => {
     return {
-        Email: ['test@testingmail.com', 'test1@testingmail.com'],
+        Email: ['test@testingmail.com',
+                'test1@testingmail.com',
+                'test2@testingmail.com',
+                'test3@testingmail.com',
+                'test4@testingmail.com',
+                'test5@testingmail.com',
+                'test6@testingmail.com',
+                'test7@testingmail.com',
+                'test8@testingmail.com',
+                'test9@testingmail.com'],
         Password: 'Echo123$',
         Event: `Test Event ${Date.now()}`,
         EventDesc: faker.lorem.sentence(),

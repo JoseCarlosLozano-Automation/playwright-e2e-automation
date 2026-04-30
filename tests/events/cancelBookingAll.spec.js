@@ -6,27 +6,41 @@ import { FillBookingForm } from '../../pages/FillBookingForm';
 
 const url = "https://eventhub.rahulshettyacademy.com";
 
-test('Booking appears in user bookings list', async ({ page }) => {
+test('Cancelling all items validation', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const fillBooking = new FillBookingForm(page);
     const user = UserData();
 
     await page.goto(url);
-    await loginPage.login(user.Email[5], user.Password);
-
+    await loginPage.login(user.Email[6], user.Password);
+    
     //Booking
     await page.getByRole('button', { name: 'Events' }).click();
     const eventCard = page.getByTestId('event-card').first();
     await eventCard.getByTestId('book-now-btn').click();
     
     await expect(page.locator('#ticket-count')).toHaveText('1');
-    await fillBooking.bookingFormFiller(user.FullName, user.Email[5], user.Phone);
+    await fillBooking.bookingFormFiller(user.FullName, user.Email[6], user.Phone);
 
-    //Go to bookings and validate it appears
+    //Go to bookings and cancel all
     await page.getByRole('button', { name: 'My Bookings' }).click();
     await expect(page).toHaveURL(/\/bookings$/);
     await waitForApi(page, '/api/booking');
 
-    const bookingCards = page.locator('#booking-card');
-    await expect(bookingCards.last()).toBeVisible();
+    const bookingCard = page.locator('#booking-card');
+    await expect(bookingCard.last()).toBeVisible();
+
+    page.on('dialog', async dialog => {
+        await dialog.accept();
+    });
+
+    await page.getByRole('button', { name: 'Clear all bookings' }).click();
+
+    await expect(bookingCard).toHaveCount(0);
+    await expect(page.locator('h3.text-lg')).toHaveText('No bookings yet');
+
+    //Go back to events page
+    await page.getByRole('button', { name: 'Browse Events' }).click();
+    await expect(page).toHaveURL(/\/events$/);
+
 });

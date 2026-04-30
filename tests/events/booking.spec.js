@@ -14,7 +14,7 @@ test('User can book an event', async ({ page }) => {
 
     await page.goto(url);
 
-    await loginPage.login(user.Email[0], user.Password);
+    await loginPage.login(user.Email[4], user.Password);
 
     await page.getByTestId('nav-events').click();
     await getSeats.clickBookNow("Dilli Diwali Mela");

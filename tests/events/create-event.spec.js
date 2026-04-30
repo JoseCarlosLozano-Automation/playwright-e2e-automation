@@ -12,7 +12,7 @@ test('Admin can create an event', async ({ page }) => {
 
     await page.goto(url);
 
-    await loginPage.login(user.Email[0], user.Password);
+    await loginPage.login(user.Email[8], user.Password);
 
     await page.getByRole('button', { name: 'Admin' }).click();
     await page.getByRole('navigation').getByRole('link', { name: 'Manage Events' }).click();

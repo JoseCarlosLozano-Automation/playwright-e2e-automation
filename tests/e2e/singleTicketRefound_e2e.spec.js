@@ -13,7 +13,7 @@ test('Single ticket booking is eligible for refund', async ({ page }) => {
     await page.goto(url);
 
     //Step 1 - Log in
-    await loginPage.login(user.Email[0], user.Password);
+    await loginPage.login(user.Email[2], user.Password);
     await expect(page.locator('span:has-text("Browse Events")')).toBeVisible();
 
     //Step 2 - Book specific event with 1 ticket (default)
