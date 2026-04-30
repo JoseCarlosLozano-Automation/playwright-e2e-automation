@@ -5,7 +5,7 @@ import { waitForApi } from '../../utils/waitForApi';
 
 const url = "https://eventhub.rahulshettyacademy.com";
 
-test.only('Booking appears in user bookings list', async ({ page }) => {
+test.only('Cancelling one item validation', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const user = UserData();
 
