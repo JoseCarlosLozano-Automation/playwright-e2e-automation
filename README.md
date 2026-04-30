@@ -18,6 +18,7 @@ End-to-end and event tests automation framework built with Playwright, designed 
 -   e2e/ 
 - pages/ 
 - test-data/
+- utils/
 
 ---
 
