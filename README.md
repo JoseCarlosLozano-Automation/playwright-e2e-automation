@@ -1,4 +1,4 @@
-# Playwright E2E Automation Framework
+# Playwright E2E and unit tests Automation Framework
 End-to-end and event tests automation framework built with Playwright, designed using industry best practices such as Page Object Model (POM), feature-based test organization, and data-driven testing.
 
 ---
