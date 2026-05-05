@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 
+// Still not used emails > 11 to 14    
 export const UserData = () => {
     return {
         Email: ['test@testingmail.com',
@@ -11,7 +12,12 @@ export const UserData = () => {
                 'test6@testingmail.com',
                 'test7@testingmail.com',
                 'test8@testingmail.com',
-                'test9@testingmail.com'],
+                'test9@testingmail.com',
+                'test10@testingmail.com',
+                'test11@testingmail.com',
+                'test12@testingmail.com',
+                'test13@testingmail.com',
+                'test14@testingmail.com'],
         Password: 'Echo123$',
         Event: `Test Event ${Date.now()}`,
         EventDesc: faker.lorem.sentence(),
