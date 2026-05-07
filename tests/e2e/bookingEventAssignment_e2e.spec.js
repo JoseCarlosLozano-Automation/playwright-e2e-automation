@@ -16,33 +16,33 @@ test('Full creation, booking and valiation of an event event - E2E', async ({ pa
 
     await page.goto(url);
 
-    //Step 1 - Log in
+    // Log in
     await loginPage.login(user.Email[0], user.Password);
     await expect(page.locator('span:has-text("Browse Events")')).toBeVisible();
 
-    //Step 2 - Create an event
+    // Create an event
     await page.getByRole('button', { name: 'Admin' }).click();
     await page.getByRole('navigation').getByRole('link', { name: 'Manage Events' }).click();
     await expect(page).toHaveURL(/admin\/events/);
     await createEvent.eventFiller(user.Event, user.EventDesc, user.City, user.Venue, user.DateTime, user.Price, user.Seats);
     await expect(page.getByText('✓Event created!×')).toHaveText("✓Event created!×");
 
-    //Step 3 - Get the seats count before booking
+    // Get the seats count before booking
     await page.getByTestId('nav-events').click();
     const seatsBeforeBooking =  await getSeats.seatsCount(user.Event);
 
-    //Step 4 - Pre booking
+    // Pre booking
     await getSeats.clickBookNow(user.Event);
 
-    //Step 5 - Booking
+    // Booking
     await expect(page.locator('#ticket-count')).toHaveText('1');
     await fillBooking.bookingFormFiller(user.FullName, user.Email[0], user.Phone);
 
-    //Step 6 - Getting the booking ref
+    // Getting the booking ref
     await expect(page.locator('.booking-ref')).toBeVisible();
     const bookingRef = await page.locator('.booking-ref').textContent();
 
-    //Step 7 - Booking validation
+    // Booking validation
     await page.getByRole('button', {name: 'View My Bookings'}).click();
     await expect(page).toHaveURL(/\/bookings$/);
     const bookingCards = page.locator('#booking-card');
@@ -51,7 +51,7 @@ test('Full creation, booking and valiation of an event event - E2E', async ({ pa
     await expect(bookingCard).toBeVisible();
     await expect(bookingCard.locator('h3')).toHaveText(user.Event);
 
-    //Step 8 - Last comparation, before and after booking
+    // Last comparation, before and after booking
     await page.getByTestId('nav-events').click();
     const seatsAfterBooking = await getSeats.seatsCount(user.Event); 
     expect(seatsAfterBooking).toBe(seatsBeforeBooking - 1);
