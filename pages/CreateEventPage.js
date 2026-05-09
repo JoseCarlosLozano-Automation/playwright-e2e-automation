@@ -1,6 +1,5 @@
 export class CreateEventPage {
     constructor(page){
-        this.page = page;
         this.eventTitle = page.getByTestId('event-title-input');
         this.eventDescription = page.getByRole('textbox', { name: 'Describe the event…' });
         this.eventCategory = page.getByLabel('Category*');

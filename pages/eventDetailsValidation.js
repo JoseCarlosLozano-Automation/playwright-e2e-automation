@@ -1,8 +1,7 @@
 import { expect } from '@playwright/test';
 
-export class eventDetailsValidation {
+export class EventDetailsValidation {
     constructor(page){
-        this.page = page;
         this.eventTitle = page.getByTestId('event-title-input');
         this.eventDescription = page.getByPlaceholder('Describe the event…');
         this.eventCity = page.locator('#city');
@@ -11,7 +10,7 @@ export class eventDetailsValidation {
         this.eventPrice = page.locator('[id="price-($)"]');
     }
 
-    async eventValidation(title, description, city, venue, dateTime, price){
+    async validateEventDetails(title, description, city, venue, dateTime, price){
         await expect(this.eventTitle).toHaveValue(title);
         await expect(this.eventDescription).toHaveValue(description);
         await expect(this.eventCity).toHaveValue(city);

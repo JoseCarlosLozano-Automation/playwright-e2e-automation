@@ -1,6 +1,5 @@
 export class FillBookingForm {
     constructor(page){
-        this.page = page;
         this.fullNameBox = page.getByRole('textbox', { name: 'Full Name*' });
         this.emailBox = page.getByTestId('customer-email');
         this.phoneBox = page.getByRole('textbox', { name: 'Phone Number*' });

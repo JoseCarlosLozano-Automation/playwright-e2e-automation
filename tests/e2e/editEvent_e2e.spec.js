@@ -3,7 +3,7 @@ import { LoginPage } from '../../pages/LoginPage';
 import { CreateEventPage } from '../../pages/CreateEventPage';
 import { FillBookingForm } from '../../pages/FillBookingForm';
 import { GetSeatsCount } from '../../pages/GetSeatsCount';
-import { eventDetailsValidation } from '../../pages/eventDetailsValidation';
+import { EventDetailsValidation } from '../../pages/EventDetailsValidation';
 import { UserData } from '../../test-data/userData';
 
 const url = "https://eventhub.rahulshettyacademy.com";
@@ -13,7 +13,7 @@ test('Edit a previously created event - E2E', async ({ page }) => {
     const createEvent = new CreateEventPage(page);
     const fillBooking = new FillBookingForm(page);
     const getSeats = new GetSeatsCount(page);
-    const eventValidation = new eventDetailsValidation(page);
+    const eventValidation = new EventDetailsValidation(page);
     const user = UserData();
 
     await page.goto(url);
@@ -43,7 +43,7 @@ test('Edit a previously created event - E2E', async ({ page }) => {
     await bookingCard.getByRole('button', { name: 'Edit' }).click();
 
     // Validate that the event details are pre-filled in the form with the correct information
-    await eventValidation.eventValidation(eventName, eventDesc, eventCity, eventVenue, eventDateTime, eventPrice);
+    await eventValidation.validateEventDetails(eventName, eventDesc, eventCity, eventVenue, eventDateTime, eventPrice);
 
     // Edit the event details
     const updatedEventName = eventName + " - UPDATED";
@@ -66,6 +66,6 @@ test('Edit a previously created event - E2E', async ({ page }) => {
     await updatedBookingCard.getByRole('button', { name: 'Edit' }).click();
 
     // Validate that the updated event details are displayed correctly in the form and in the event details page
-    await eventValidation.eventValidation(updatedEventName, updatedEventDesc, updatedEventCity, updatedEventVenue, updatedEventDateTime, updatedEventPrice);
+    await eventValidation.validateEventDetails(updatedEventName, updatedEventDesc, updatedEventCity, updatedEventVenue, updatedEventDateTime, updatedEventPrice);
 
 });
