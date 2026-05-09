@@ -12,13 +12,13 @@ Automation framework qith End-to-end and Unit tests, built with Playwright, desi
 ---
 
 ## Project Structure
-- tests/ 
-- ...auth/ 
-- ...events/ 
-- ......categories/
-- ...e2e/ 
 - pages/ 
 - test-data/
+- tests/ 
+- ...auth/ 
+- ...e2e/ 
+- ...events/ 
+- ......categories/
 - utils/
 
 ---
