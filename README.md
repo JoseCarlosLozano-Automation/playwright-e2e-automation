@@ -1,5 +1,5 @@
 # Playwright E2E and unit tests Automation Framework
-End-to-end and event tests automation framework built with Playwright, designed using industry best practices such as Page Object Model (POM), feature-based test organization, and data-driven testing.
+Automation framework qith End-to-end and Unit tests, built with Playwright, designed using industry best practices such as Page Object Model (POM), feature-based test organization, and data-driven testing.
 
 ---
 
@@ -13,9 +13,10 @@ End-to-end and event tests automation framework built with Playwright, designed 
 
 ## Project Structure
 - tests/ 
--   auth/ 
--   events/ 
--   e2e/ 
+- ...auth/ 
+- ...events/ 
+- ......events/
+- ...e2e/ 
 - pages/ 
 - test-data/
 - utils/
@@ -25,7 +26,7 @@ End-to-end and event tests automation framework built with Playwright, designed 
 ## Features
 - Dynamic test data using Faker
 - Scalable Page Object Model structure
-- Real-world test scenario (event creation & booking)
+- Real-world test scenarios
 - UI validations and business logic assertions
 
 ---
@@ -36,12 +37,14 @@ End-to-end and event tests automation framework built with Playwright, designed 
 
 ---
 
-## Example Test Flow
+## Example Test Flows
 - Create event as admin
 - Validate event appears in list
 - Book ticket as user
 - Validate booking confirmation and details
 - Verify seat count decreases after booking
+- Edit an event
+- And more...
 
 ---
 
